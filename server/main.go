@@ -15,7 +15,6 @@ func main() {
 	r := gin.Default()
 
 	r.GET("/sources", api.FetchSources)
-	r.GET("/sources/random", api.FetchRandomSource)
 	r.POST("/sources", api.CreateSource)
 	r.PUT("/sources/:id", api.EditSource)
 	r.GET("/quotations", api.FetchQuotations)

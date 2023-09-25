@@ -20,16 +20,6 @@ func FetchSources(c *gin.Context) {
 	c.JSON(200, sources)
 }
 
-func FetchRandomSource(c *gin.Context) {
-	var source model.Source
-	err := database.DB.Preload("Quotations").Order("RANDOM()").First(&source).Error
-	if err != nil {
-		log.Print(err)
-	}
-
-	c.JSON(200, source)
-}
-
 func CreateSource(c *gin.Context) {
 	var source model.Source
 	if err := c.ShouldBindJSON(&source); err != nil {
