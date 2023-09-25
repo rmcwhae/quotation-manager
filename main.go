@@ -24,6 +24,10 @@ func main() {
 	r.GET("/sources", func(c *gin.Context) {
 		var sources []Source
 		db.Find(&sources)
+		err := db.Model(&Source{}).Preload("Quotations").Find(&sources).Error
+		if err != nil {
+			panic(err)
+		}
 		c.JSON(200, sources)
 	})
 	r.POST("/sources", func(c *gin.Context) {
@@ -71,9 +75,10 @@ type GormModel struct {
 
 type Source struct {
 	GormModel
-	Title  string  `json:"title"`
-	Author string  `json:"author"`
-	Url    *string `json:"url"`
+	Title      string      `json:"title"`
+	Author     string      `json:"author"`
+	Url        *string     `json:"url"`
+	Quotations []Quotation `gorm:"foreignKey:SourceID" json:"quotations"`
 }
 
 type Quotation struct {
