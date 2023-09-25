@@ -21,12 +21,42 @@ func main() {
 	// Setup routes
 	r := gin.Default()
 
-	// r.POST("/sources", CreateSource)
-	// r.GET("/sources", GetSources)
-	// r.PUT("/sources/:id", UpdateSource)
-	// r.GET("/quotations", GetQuotations)
-	// r.POST("/quotations", CreateQuotation)
-	// r.PUT("/quotations/:id", UpdateQuotation)
+	r.GET("/sources", func(c *gin.Context) {
+		var sources []Source
+		db.Find(&sources)
+		c.JSON(200, sources)
+	})
+	r.POST("/sources", func(c *gin.Context) {
+		var source Source
+		c.BindJSON(&source)
+		db.Create(&source)
+		c.JSON(200, source)
+	})
+	r.PUT("/sources/:id", func(c *gin.Context) {
+		var source Source
+		db.First(&source, c.Param("id"))
+		c.BindJSON(&source)
+		db.Save(&source)
+		c.JSON(200, source)
+	})
+	r.GET("/quotations", func(c *gin.Context) {
+		var quotations []Quotation
+		db.Find(&quotations)
+		c.JSON(200, quotations)
+	})
+	r.POST("/quotations", func(c *gin.Context) {
+		var quotation Quotation
+		c.BindJSON(&quotation)
+		db.Create(&quotation)
+		c.JSON(200, quotation)
+	})
+	r.PUT("/quotations/:id", func(c *gin.Context) {
+		var quotation Quotation
+		db.First(&quotation, c.Param("id"))
+		c.BindJSON(&quotation)
+		db.Save(&quotation)
+		c.JSON(200, quotation)
+	})
 
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
