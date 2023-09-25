@@ -23,7 +23,6 @@ func main() {
 
 	r.GET("/sources", func(c *gin.Context) {
 		var sources []Source
-		db.Find(&sources)
 		err := db.Model(&Source{}).Preload("Quotations").Find(&sources).Error
 		if err != nil {
 			panic(err)
@@ -49,9 +48,20 @@ func main() {
 		c.JSON(200, source)
 	})
 	r.GET("/quotations", func(c *gin.Context) {
-		var quotations []Quotation
-		db.Find(&quotations)
+		var quotations []QuotationWithSource
+		err := db.Model(&Quotation{}).Preload("Source").Find(&quotations).Error
+		if err != nil {
+			panic(err)
+		}
 		c.JSON(200, quotations)
+	})
+	r.GET("/quotations/random", func(c *gin.Context) {
+		var quotation QuotationWithSource
+		err := db.Model(&Quotation{}).Preload("Source").Order("RANDOM()").First(&quotation).Error
+		if err != nil {
+			panic(err)
+		}
+		c.JSON(200, quotation)
 	})
 	r.POST("/quotations", func(c *gin.Context) {
 		var quotation Quotation
@@ -88,7 +98,16 @@ type Source struct {
 
 type Quotation struct {
 	GormModel
-	SourceID  uint   `json:"source_id"`
+	SourceID  uint   `gorm:"not null" json:"source_id"`
+	Content   string `json:"content"`
+	StartPage *uint  `json:"start_page"`
+	EndPage   *uint  `json:"end_page"`
+}
+
+type QuotationWithSource struct {
+	GormModel
+	SourceID  uint `gorm:"not null" json:"source_id"`
+	Source    Source
 	Content   string `json:"content"`
 	StartPage *uint  `json:"start_page"`
 	EndPage   *uint  `json:"end_page"`
