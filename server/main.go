@@ -16,48 +16,12 @@ func main() {
 
 	r.GET("/sources", api.FetchSources)
 	r.GET("/sources/random", api.FetchRandomSource)
-	// r.POST("/sources", api.CreateSource)
-	// 	var source model.Source
-	// 	c.BindJSON(&source)
-	// 	db.Create(&source)
-	// 	c.JSON(200, source)
-	// })
-	// r.PUT("/sources/:id", func(c *gin.Context) {
-	// 	var source model.Source
-	// 	db.First(&source, c.Param("id"))
-	// 	c.BindJSON(&source)
-	// 	db.Save(&source)
-	// 	c.JSON(200, source)
-	// })
-	// r.GET("/quotations", func(c *gin.Context) {
-	// 	var quotations []model.QuotationWithSource
-	// 	err := db.Model(&model.Quotation{}).Preload("Source").Find(&quotations).Error
-	// 	if err != nil {
-	// 		panic(err)
-	// 	}
-	// 	c.JSON(200, quotations)
-	// })
-	// r.GET("/quotations/random", func(c *gin.Context) {
-	// 	var quotation model.QuotationWithSource
-	// 	err := db.Model(&model.Quotation{}).Preload("Source").Order("RANDOM()").First(&quotation).Error
-	// 	if err != nil {
-	// 		panic(err)
-	// 	}
-	// 	c.JSON(200, quotation)
-	// })
-	// r.POST("/quotations", func(c *gin.Context) {
-	// 	var quotation model.Quotation
-	// 	c.BindJSON(&quotation)
-	// 	db.Create(&quotation)
-	// 	c.JSON(200, quotation)
-	// })
-	// r.PUT("/quotations/:id", func(c *gin.Context) {
-	// 	var quotation model.Quotation
-	// 	db.First(&quotation, c.Param("id"))
-	// 	c.BindJSON(&quotation)
-	// 	db.Save(&quotation)
-	// 	c.JSON(200, quotation)
-	// })
+	r.POST("/sources", api.CreateSource)
+	r.PUT("/sources/:id", api.EditSource)
+	r.GET("/quotations", api.FetchQuotations)
+	r.GET("/quotations/random", api.FetchRandomQuotation)
+	r.POST("/quotations", api.CreateQuotation)
+	r.PUT("/quotations/:id", api.EditQuotation)
 
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
