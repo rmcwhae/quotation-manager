@@ -3,6 +3,8 @@ package api
 import (
 	"log"
 
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/russellmcwhae/quotation-manager/database"
 	"github.com/russellmcwhae/quotation-manager/model"
@@ -30,7 +32,11 @@ func FetchRandomSource(c *gin.Context) {
 
 func CreateSource(c *gin.Context) {
 	var source model.Source
-	c.BindJSON(&source)
+	if err := c.ShouldBindJSON(&source); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
 	database.DB.Create(&source)
 
 	c.JSON(200, source)
@@ -38,8 +44,16 @@ func CreateSource(c *gin.Context) {
 
 func EditSource(c *gin.Context) {
 	var source model.Source
-	database.DB.First(&source, c.Param("id"))
-	c.BindJSON(&source)
+	if err := database.DB.First(&source, c.Param("id")).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	if err := c.ShouldBindJSON(&source); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
 	database.DB.Save(&source)
 
 	c.JSON(200, source)
@@ -67,7 +81,11 @@ func FetchRandomQuotation(c *gin.Context) {
 
 func CreateQuotation(c *gin.Context) {
 	var quotation model.Quotation
-	c.BindJSON(&quotation)
+	if err := c.ShouldBindJSON(&quotation); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
 	database.DB.Create(&quotation)
 
 	c.JSON(200, quotation)
@@ -75,9 +93,15 @@ func CreateQuotation(c *gin.Context) {
 
 func EditQuotation(c *gin.Context) {
 	var quotation model.Quotation
-	database.DB.First(&quotation, c.Param("id"))
-	c.BindJSON(&quotation)
-	database.DB.Save(&quotation)
+	if err := database.DB.First(&quotation, c.Param("id")).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	if err := c.ShouldBindJSON(&quotation); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
 
 	c.JSON(200, quotation)
 }
