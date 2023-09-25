@@ -105,10 +105,6 @@ type Quotation struct {
 }
 
 type QuotationWithSource struct {
-	GormModel
-	SourceID  uint `gorm:"not null" json:"source_id"`
-	Source    Source
-	Content   string `json:"content"`
-	StartPage *uint  `json:"start_page"`
-	EndPage   *uint  `json:"end_page"`
+	Quotation
+	Source Source `json:"source"`
 }
