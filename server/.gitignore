@@ -1,5 +1,4 @@
 
-env.local
-*.local
+.env
 quotation-manager
 quotations.db
