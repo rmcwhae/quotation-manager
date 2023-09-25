@@ -30,6 +30,11 @@ func main() {
 		}
 		c.JSON(200, sources)
 	})
+	r.GET("/sources/random", func(c *gin.Context) {
+		var source Source
+		db.Preload("Quotations").Order("RANDOM()").First(&source)
+		c.JSON(200, source)
+	})
 	r.POST("/sources", func(c *gin.Context) {
 		var source Source
 		c.BindJSON(&source)
