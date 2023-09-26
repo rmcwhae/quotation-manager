@@ -8,11 +8,15 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/russellmcwhae/quotation-manager/database"
 	"github.com/russellmcwhae/quotation-manager/model"
+	"gorm.io/gorm"
 )
 
 func FetchSources(c *gin.Context) {
 	var sources []model.Source
-	err := database.DB.Model(&model.Source{}).Preload("Quotations").Find(&sources).Error
+	err := database.DB.Model(&model.Source{}).Preload("Quotations", func(db *gorm.DB) *gorm.DB {
+		db = db.Order("start_page asc")
+		return db
+	}).Find(&sources).Error
 	if err != nil {
 		log.Print(err)
 	}
