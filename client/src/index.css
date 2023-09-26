@@ -60,7 +60,8 @@ h6 {
     font-weight: 600;
 }
 h1 {
-    font-size: 3.052rem;
+    font-size: 1rem;
+    text-align: center;
     line-height: 1;
     margin: var(--s-1) 0;
 }
