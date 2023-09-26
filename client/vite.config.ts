@@ -9,7 +9,7 @@ export default defineConfig({
 		VitePWA({
 			registerType: 'autoUpdate',
 			manifest: {
-				name: 'Quotation Manager',
+				name: 'Quotations',
 				short_name: 'Quotations',
 				theme_color: '#ffffff',
 				icons: [
