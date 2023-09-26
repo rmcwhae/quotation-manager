@@ -11,7 +11,6 @@ export function App() {
 
 	return (
 		<>
-			<h1>Quotation Manager</h1>
 			{sources.map((source: Source) => (
 				<SourceWithQuotations key={source.id} source={source} />
 			))}
