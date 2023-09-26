@@ -10,14 +10,14 @@ export const SourceWithQuotations = ({ source }: Props) => {
 	return (
 		<>
 			<h2>
-				{url ? (
-					<a href={url} style={styles.heading}>
-						{title}
+				<span>
+					<span style={styles.italic}>{title}</span> by {author}
+				</span>
+				{url && (
+					<a href={url} target="_blank" style={styles.link}>
+						Visit
 					</a>
-				) : (
-					<span style={styles.heading}>{title}</span>
-				)}{' '}
-				by {author}
+				)}
 			</h2>
 			{quotations.map(quotation => (
 				<Quotation key={quotation.id} quotation={quotation} />
@@ -27,7 +27,17 @@ export const SourceWithQuotations = ({ source }: Props) => {
 }
 
 const styles = {
-	heading: {
+	italic: {
 		fontStyle: 'italic',
+	},
+	link: {
+		verticalAlign: 'middle',
+		color: 'inherit',
+		fontSize: '14.4px',
+		fontWeight: 600,
+		marginLeft: 'var(--s-1)',
+		border: '1px solid',
+		padding: 'var(--s-5) var(--s-2)',
+		borderRadius: 99,
 	},
 }
