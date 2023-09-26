@@ -32,11 +32,32 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--high-contrast-color);
+    margin-bottom: var(--s0);
+    font-weight: 600;
 }
-
+h1 {
+    font-size: 3.052rem;
+    line-height: 1;
+    margin: var(--s-1) 0;
+}
+h2 {
+    font-size: 1.953rem;
+    font-weight: 700;
+}
+h3 {
+    font-weight: 600;
+    font-size: 1.536rem;
+}
+h4 {
+    font-size: 1.25rem;
+}
 button {
   border-radius: 8px;
   border: 1px solid transparent;
