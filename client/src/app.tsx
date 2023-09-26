@@ -1,11 +1,20 @@
-import { useQuotations } from './hooks/use-quotations'
+import { SourceWithQuotations } from './components/SourceWithQuotations'
+import { useSources } from './hooks/use-sources'
+import { Source } from './types/Source'
 
 export function App() {
-	const { quotations, isLoading, mutate } = useQuotations()
-	console.log('quotations', quotations)
+	const { sources, isLoading } = useSources()
+
+	if (isLoading) {
+		return <div>Loading...</div>
+	}
+
 	return (
 		<>
-			<h3>Quotation Manager</h3>
+			<h1>Quotation Manager</h1>
+			{sources.map((source: Source) => (
+				<SourceWithQuotations key={source.id} source={source} />
+			))}
 		</>
 	)
 }
