@@ -1,3 +1,4 @@
+import { SourceForm } from './components/SourceForm'
 import { SourceWithQuotations } from './components/SourceWithQuotations'
 import { useSources } from './hooks/use-sources'
 import { Source } from './types/Source'
@@ -11,6 +12,7 @@ export function App() {
 
 	return (
 		<>
+			<SourceForm />
 			{sources.map((source: Source) => (
 				<SourceWithQuotations key={source.id} source={source} />
 			))}
