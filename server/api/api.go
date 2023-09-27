@@ -13,7 +13,7 @@ import (
 
 func FetchSources(c *gin.Context) {
 	var sources []model.Source
-	err := database.DB.Model(&model.Source{}).Preload("Quotations", func(db *gorm.DB) *gorm.DB {
+	err := database.DB.Model(&model.Source{}).Order("updated_at desc").Preload("Quotations", func(db *gorm.DB) *gorm.DB {
 		db = db.Order("start_page asc")
 		return db
 	}).Find(&sources).Error

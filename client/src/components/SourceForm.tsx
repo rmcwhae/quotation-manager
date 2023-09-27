@@ -1,19 +1,25 @@
-import { useForm } from 'react-hook-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import { Source } from '../types/Source'
+import { postSource } from '../services/Sources'
+import { useSources } from '../hooks/use-sources'
 
 export const SourceForm = () => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm()
+	} = useForm<Source>()
+	const { mutate } = useSources()
+
+	const onSubmit: SubmitHandler<Source> = async data => {
+		await postSource(data)
+		mutate()
+	}
 
 	return (
 		<div>
 			<h3 className="centered">Add a source</h3>
-			<form
-				onSubmit={handleSubmit(data => console.log(data))}
-				style={styles.wrapper}
-			>
+			<form onSubmit={handleSubmit(onSubmit)} style={styles.wrapper}>
 				<input
 					{...register('title', { required: true })}
 					placeholder="Title"
