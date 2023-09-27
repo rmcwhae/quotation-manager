@@ -10,10 +10,13 @@ export function App() {
 	const [selectedSourceId, setSelectedSourceId] = useState<number | null>(
 		null
 	)
-	console.log('selectedSourceId', selectedSourceId)
 
 	if (isLoading) {
 		return <div>Loading...</div>
+	}
+
+	const handleBack = () => {
+		setSelectedSourceId(null)
 	}
 
 	return (
@@ -21,6 +24,7 @@ export function App() {
 			{selectedSourceId ? (
 				<>
 					<p>Add quotations…</p>
+					<button onClick={handleBack}>Back</button>
 					{sources.map((source: Source) => {
 						if (source.id === selectedSourceId) {
 							return (

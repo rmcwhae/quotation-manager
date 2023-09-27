@@ -10,7 +10,7 @@ export const SourceWithQuotations = ({ source, onClick }: Props) => {
 
 	return (
 		<>
-			<h2 onClick={onClick}>
+			<h2 onClick={onClick} style={styles.pointer}>
 				<span>
 					<span style={styles.italic}>{title}</span> by {author}
 				</span>
@@ -28,6 +28,9 @@ export const SourceWithQuotations = ({ source, onClick }: Props) => {
 }
 
 const styles = {
+	pointer: {
+		cursor: 'pointer',
+	},
 	italic: {
 		fontStyle: 'italic',
 	},
