@@ -3,13 +3,14 @@ import { Quotation } from './Quotation'
 
 type Props = {
 	source: Source
+	onClick: () => void
 }
-export const SourceWithQuotations = ({ source }: Props) => {
+export const SourceWithQuotations = ({ source, onClick }: Props) => {
 	const { url, title, author, quotations } = source
 
 	return (
 		<>
-			<h2>
+			<h2 onClick={onClick}>
 				<span>
 					<span style={styles.italic}>{title}</span> by {author}
 				</span>
