@@ -14,13 +14,14 @@ export const QuotationForm = ({ sourceId }: { sourceId: number }) => {
 	const onSubmit: SubmitHandler<Quotation> = async data => {
 		data.source_id = sourceId
 		// TODO: is there a better way to do this?
-		if (data.start_page === '') {
+		if (!data.start_page) {
 			delete data.start_page
 		}
-		if (data.end_page === '') {
+		if (!data.end_page) {
 			delete data.end_page
 		}
-		await postQuotation(data)
+		const response = await postQuotation(data)
+		console.log('response', response)
 		mutate()
 	}
 
