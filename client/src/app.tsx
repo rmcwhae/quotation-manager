@@ -24,8 +24,10 @@ export function App() {
 		<>
 			{selectedSourceId ? (
 				<>
+					<button onClick={handleBack} style={styles.marginTop}>
+						Back
+					</button>
 					<QuotationForm sourceId={selectedSourceId} />
-					<button onClick={handleBack}>Back</button>
 					{sources.map((source: Source) => {
 						if (source.id === selectedSourceId) {
 							return (
@@ -58,4 +60,10 @@ export function App() {
 			)}
 		</>
 	)
+}
+
+const styles = {
+	marginTop: {
+		marginTop: 'var(--s0)',
+	},
 }
