@@ -14,7 +14,7 @@ import (
 func FetchSources(c *gin.Context) {
 	var sources []model.Source
 	err := database.DB.Model(&model.Source{}).Order("updated_at desc").Preload("Quotations", func(db *gorm.DB) *gorm.DB {
-		db = db.Order("start_page asc")
+		db = db.Order("start_page asc").Order("created_at desc")
 		return db
 	}).Find(&sources).Error
 	if err != nil {

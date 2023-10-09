@@ -7,7 +7,8 @@ export const QuotationForm = ({ sourceId }: { sourceId: number }) => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		// formState: { errors },
+		reset,
 	} = useForm<Quotation>()
 	const { mutate } = useSources()
 
@@ -21,8 +22,13 @@ export const QuotationForm = ({ sourceId }: { sourceId: number }) => {
 			delete data.end_page
 		}
 		const response = await postQuotation(data)
-		console.log('response', response)
 		mutate()
+		reset()
+		// TODO: get me working
+		if (response.status === 200) {
+		} else {
+			console.error(response.error)
+		}
 	}
 
 	return (
