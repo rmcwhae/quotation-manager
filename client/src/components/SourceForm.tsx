@@ -41,6 +41,7 @@ const styles = {
 	wrapper: {
 		display: 'flex',
 		flexDirection: 'row',
+		flexWrap: 'wrap',
 		gap: 'var(--s-1)',
 	},
 }
