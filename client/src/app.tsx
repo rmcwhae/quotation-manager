@@ -4,6 +4,7 @@ import { SourceForm } from './components/SourceForm'
 import { SourceWithQuotations } from './components/SourceWithQuotations'
 import { useSources } from './hooks/use-sources'
 import { Source } from './types/Source'
+import { QuotationForm } from './components/QuotationForm'
 
 export function App() {
 	const { sources, isLoading } = useSources()
@@ -23,7 +24,7 @@ export function App() {
 		<>
 			{selectedSourceId ? (
 				<>
-					<p>Add quotations…</p>
+					<QuotationForm sourceId={selectedSourceId} />
 					<button onClick={handleBack}>Back</button>
 					{sources.map((source: Source) => {
 						if (source.id === selectedSourceId) {

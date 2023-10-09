@@ -1,13 +1,13 @@
-import useSWR from 'swr'
+// import useSWR from 'swr'
 
-import { fetchQuotations } from '../services/Quotations'
+// import { fetchQuotations } from '../services/Quotations'
 
-export const useQuotations = () => {
-	const { data, mutate, isLoading } = useSWR(`/quotations`, fetchQuotations)
+// export const useQuotations = () => {
+// 	const { data, mutate, isLoading } = useSWR(`/quotations`, fetchQuotations)
 
-	return {
-		quotations: data,
-		isLoading,
-		mutate,
-	}
-}
+// 	return {
+// 		quotations: data,
+// 		isLoading,
+// 		mutate,
+// 	}
+// }
