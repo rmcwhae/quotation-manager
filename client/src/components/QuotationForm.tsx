@@ -30,13 +30,13 @@ export const QuotationForm = ({ sourceId }: { sourceId: number }) => {
 						{...register('end_page', { required: false })}
 						placeholder="End Page"
 					/>
-					<button type="submit">Submit</button>
 				</div>
 				<textarea
 					style={styles.textbox}
 					{...register('content', { required: true })}
 					placeholder="Content"
 				/>
+				<button type="submit">Submit</button>
 			</form>
 		</div>
 	)
