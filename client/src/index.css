@@ -1,5 +1,5 @@
 :root {
-  font-family: source-sans-3, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'charter', source-sans-3, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 1.125rem;
   line-height: 1.5;
@@ -79,11 +79,11 @@ h4 {
 }
 button {
   border-radius: 99px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   border: 1px solid transparent;
   padding: var(--s-2) var(--s1);
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
