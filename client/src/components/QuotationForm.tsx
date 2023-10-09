@@ -17,9 +17,13 @@ export const QuotationForm = ({ sourceId }: { sourceId: number }) => {
 		// TODO: is there a better way to do this?
 		if (!data.start_page) {
 			delete data.start_page
+		} else {
+			data.start_page = Number(data.start_page)
 		}
 		if (!data.end_page) {
 			delete data.end_page
+		} else {
+			data.end_page = Number(data.end_page)
 		}
 		const response = await postQuotation(data)
 		mutate()
@@ -37,10 +41,12 @@ export const QuotationForm = ({ sourceId }: { sourceId: number }) => {
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div style={styles.wrapper}>
 					<input
+						type="number"
 						{...register('start_page', { required: false })}
 						placeholder="Start Page"
 					/>
 					<input
+						type="number"
 						{...register('end_page', { required: false })}
 						placeholder="End Page"
 					/>
