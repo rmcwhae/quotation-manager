@@ -39,12 +39,3 @@ export const SourceForm = () => {
 		</div>
 	)
 }
-
-const styles = {
-	flex: {
-		display: 'flex',
-		flexDirection: 'row',
-		flexWrap: 'wrap',
-		gap: 'var(--s-1)',
-	},
-}

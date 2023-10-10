@@ -61,9 +61,3 @@ export function App() {
 		</>
 	)
 }
-
-const styles = {
-	marginTop: {
-		marginTop: 'var(--s0)',
-	},
-}
