@@ -17,6 +17,9 @@ This is a little app for managing literary quotations.
 
 ## Client
 
+-   Preact
+-   PWA
+
 ## Running the client
 
 `cd client` then `npm i` then `npm run dev` or `npm run build` and `npm run preview`
