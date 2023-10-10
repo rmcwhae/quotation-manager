@@ -42,11 +42,13 @@ export const QuotationForm = ({ sourceId }: { sourceId: number }) => {
 				<div style={styles.wrapper}>
 					<input
 						type="number"
+						style={styles.number}
 						{...register('start_page', { required: false })}
 						placeholder="Start Page"
 					/>
 					<input
 						type="number"
+						style={styles.number}
 						{...register('end_page', { required: false })}
 						placeholder="End Page"
 					/>
@@ -73,5 +75,8 @@ const styles = {
 	textbox: {
 		width: '100%',
 		minHeight: '70px',
+	},
+	number: {
+		width: 100,
 	},
 }
