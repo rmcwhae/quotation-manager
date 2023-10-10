@@ -121,6 +121,7 @@ button {
 	border-radius: var(--circle-radius);
 }
 textarea {
+	vertical-align: top;
 	border-radius: var(--radius);
 	padding: var(--s-2) var(--s0);
 }

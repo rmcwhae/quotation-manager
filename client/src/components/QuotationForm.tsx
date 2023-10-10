@@ -69,7 +69,7 @@ export const QuotationForm = ({ sourceId }: { sourceId: number }) => {
 const styles = {
 	textbox: {
 		width: '100%',
-		minHeight: '70px',
+		minHeight: '100px',
 	},
 	number: {
 		width: 140,

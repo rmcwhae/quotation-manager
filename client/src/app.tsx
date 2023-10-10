@@ -25,7 +25,7 @@ export function App() {
 			{selectedSourceId ? (
 				<>
 					<button onClick={handleBack} className="mb-s0">
-						Back
+						‹ Back
 					</button>
 					<QuotationForm sourceId={selectedSourceId} />
 					{sources.map((source: Source) => {
