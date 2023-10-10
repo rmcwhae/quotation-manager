@@ -19,6 +19,7 @@ This is a little app for managing literary quotations.
 
 -   Preact
 -   PWA
+-   TypeScript
 
 ## Running the client
 
