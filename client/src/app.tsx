@@ -24,7 +24,7 @@ export function App() {
 		<>
 			{selectedSourceId ? (
 				<>
-					<button onClick={handleBack} style={styles.marginTop}>
+					<button onClick={handleBack} className="mb-s0">
 						Back
 					</button>
 					<QuotationForm sourceId={selectedSourceId} />

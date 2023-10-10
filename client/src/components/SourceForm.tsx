@@ -17,28 +17,31 @@ export const SourceForm = () => {
 	}
 
 	return (
-		<div>
+		<div className="form-outline">
 			<h3 className="centered">Add a source</h3>
-			<form onSubmit={handleSubmit(onSubmit)} style={styles.wrapper}>
-				<input
-					{...register('title', { required: true })}
-					placeholder="Title"
-				/>
-				{/* {errors.title && <span>Required</span>} */}
-				<input
-					{...register('author', { required: true })}
-					placeholder="Author"
-				/>
-				{/* {errors.author && <span>Required</span>} */}
-				<input {...register('url')} placeholder="URL" />
-				<button type="submit">Submit</button>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<div className="flex">
+					<input
+						{...register('title', { required: true })}
+						placeholder="Title"
+					/>
+					{/* {errors.title && <span>Required</span>} */}
+					<input
+						{...register('author', { required: true })}
+						placeholder="Author"
+					/>
+					<input {...register('url')} placeholder="URL" />
+				</div>
+				<button type="submit" className="submit">
+					Submit
+				</button>
 			</form>
 		</div>
 	)
 }
 
 const styles = {
-	wrapper: {
+	flex: {
 		display: 'flex',
 		flexDirection: 'row',
 		flexWrap: 'wrap',

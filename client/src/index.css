@@ -52,13 +52,7 @@
 	--s5: calc(var(--s4) * var(--ratio));
 }
 
-body {
-	color: var(--text-colour);
-	background-color: var(--background-colour);
-}
-
 a {
-	font-weight: 500;
 	color: #646cff;
 	text-decoration: inherit;
 }
@@ -67,7 +61,9 @@ a:hover {
 }
 
 body {
-	margin: 0 auto;
+	color: var(--text-colour);
+	background-color: var(--background-colour);
+	margin: var(--s1) auto;
 	padding: 0 var(--s1);
 	min-width: 320px;
 	max-width: 900px;
@@ -109,16 +105,18 @@ input {
 		sans-serif;
 	border: 1px solid var(--more-faded);
 	font-size: 1em;
-	font-weight: 500;
+	line-height: 1.25;
 	border-radius: var(--radius);
 	color: var(--text-colour);
 	background-color: var(--paper);
 	transition: border-color 0.25s;
 }
 button {
-	padding: var(--s-2) var(--s1);
+	padding: var(--s-3) var(--s0);
 	cursor: pointer;
-	border-color: var(--faded);
+	border-color: transparent;
+	font-weight: 600;
+	font-size: 0.9em;
 	background-color: var(--more-faded);
 	border-radius: var(--circle-radius);
 }
@@ -148,4 +146,37 @@ button:focus-visible {
 	.quotation {
 		margin-left: var(--s1);
 	}
+}
+.form-outline {
+	padding: var(--s-1) var(--s0);
+	border-radius: var(--radius);
+	border: 1px solid var(--more-faded);
+}
+.mt-s0 {
+	margin-top: var(--s0);
+}
+.mt-s1 {
+	margin-top: var(--s1);
+}
+.mb-s0 {
+	margin-bottom: var(--s0);
+}
+.mb-s1 {
+	margin-bottom: var(--s1);
+}
+.submit {
+	display: inherit;
+	margin-top: var(--s0);
+	margin-left: auto;
+	margin-right: 0;
+}
+.flex {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: var(--s-1);
+	margin: var(--s-1) 0;
+}
+.flex > * {
+	flex: 1 1 0;
 }

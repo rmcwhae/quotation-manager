@@ -36,10 +36,10 @@ export const QuotationForm = ({ sourceId }: { sourceId: number }) => {
 	}
 
 	return (
-		<div>
+		<div className="form-outline">
 			<h3 className="centered">Add a quotation</h3>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<div style={styles.wrapper}>
+				<div className="flex">
 					<input
 						type="number"
 						style={styles.number}
@@ -58,25 +58,20 @@ export const QuotationForm = ({ sourceId }: { sourceId: number }) => {
 					{...register('content', { required: true })}
 					placeholder="Content"
 				/>
-				<button type="submit">Submit</button>
+				<button type="submit" className="submit">
+					Submit
+				</button>
 			</form>
 		</div>
 	)
 }
 
 const styles = {
-	wrapper: {
-		display: 'flex',
-		flexDirection: 'row',
-		flexWrap: 'wrap',
-		gap: 'var(--s-1)',
-		margin: 'var(--s-1) 0',
-	},
 	textbox: {
 		width: '100%',
 		minHeight: '70px',
 	},
 	number: {
-		width: 100,
+		width: 140,
 	},
 }
