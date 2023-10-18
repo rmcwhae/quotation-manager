@@ -92,10 +92,10 @@ h2 {
 }
 h3 {
 	font-weight: 600;
-	font-size: 1.536rem;
-}
-h4 {
 	font-size: 1.25rem;
+}
+3 h4 {
+	font-size: 1.15rem;
 }
 button,
 textarea,
@@ -111,14 +111,18 @@ input {
 	background-color: var(--paper);
 	transition: border-color 0.25s;
 }
-button {
-	padding: var(--s-3) var(--s0);
-	cursor: pointer;
-	border-color: transparent;
-	font-weight: 600;
-	font-size: 0.9em;
+button,
+a.button {
+	vertical-align: middle;
+	color: inherit;
+	line-height: 1.25;
 	background-color: var(--more-faded);
-	border-radius: var(--circle-radius);
+	border: none;
+	font-size: 14.4px;
+	font-weight: 600;
+	margin-left: var(--s-1);
+	padding: var(--s-3) var(--s0);
+	border-radius: 99px;
 }
 textarea {
 	vertical-align: top;
@@ -166,10 +170,9 @@ button:focus-visible {
 	margin-bottom: var(--s1);
 }
 .submit {
-	display: inherit;
-	margin-top: var(--s0);
-	margin-left: auto;
-	margin-right: 0;
+	position: absolute;
+	top: var(--s0);
+	right: var(--s0);
 }
 .flex {
 	display: flex;
