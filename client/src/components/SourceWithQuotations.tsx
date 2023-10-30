@@ -1,23 +1,36 @@
+import { useState } from 'preact/hooks'
+
 import { Source } from '../types/Source'
 import { Quotation } from './Quotation'
+import { SourceForm } from './SourceForm'
 
 type Props = {
 	source: Source
+	editable?: boolean
 	onClick: () => void
 }
-export const SourceWithQuotations = ({ source, onClick }: Props) => {
+export const SourceWithQuotations = ({
+	source,
+	editable = false,
+	onClick,
+}: Props) => {
 	const { url, title, author, quotations } = source
+	const [editing, setEditing] = useState(false)
 
 	return (
 		<>
+			{editing && <SourceForm />}
 			<h2 onClick={onClick} style={styles.pointer}>
 				<span>
 					<span style={styles.italic}>{title}</span> by {author}
 				</span>
 				{url && (
-					<a href={url} target="_blank" style={styles.link}>
+					<a href={url} target="_blank" className="button">
 						Visit
 					</a>
+				)}
+				{editable && (
+					<button onClick={() => setEditing(true)}>Edit</button>
 				)}
 			</h2>
 			{quotations.map(quotation => (
@@ -33,15 +46,5 @@ const styles = {
 	},
 	italic: {
 		fontStyle: 'italic',
-	},
-	link: {
-		verticalAlign: 'middle',
-		color: 'inherit',
-		fontSize: '14.4px',
-		fontWeight: 600,
-		marginLeft: 'var(--s-1)',
-		border: '1px solid',
-		padding: 'var(--s-5) var(--s-2)',
-		borderRadius: 99,
 	},
 }

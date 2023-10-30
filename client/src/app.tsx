@@ -32,6 +32,7 @@ export function App() {
 						if (source.id === selectedSourceId) {
 							return (
 								<SourceWithQuotations
+									editable
 									key={source.id}
 									source={source}
 									onClick={() => {}}

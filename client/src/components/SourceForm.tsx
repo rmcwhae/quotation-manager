@@ -17,9 +17,12 @@ export const SourceForm = () => {
 	}
 
 	return (
-		<div className="form-outline">
-			<h3 className="centered">Add a source</h3>
+		<div className="form-outline" style={{ position: 'relative' }}>
 			<form onSubmit={handleSubmit(onSubmit)}>
+				<button type="submit" className="submit">
+					Submit
+				</button>
+				<h3 className="centered">Add a source</h3>
 				<div className="flex">
 					<input
 						{...register('title', { required: true })}
@@ -32,9 +35,6 @@ export const SourceForm = () => {
 					/>
 					<input {...register('url')} placeholder="URL" />
 				</div>
-				<button type="submit" className="submit">
-					Submit
-				</button>
 			</form>
 		</div>
 	)

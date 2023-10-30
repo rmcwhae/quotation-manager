@@ -36,9 +36,12 @@ export const QuotationForm = ({ sourceId }: { sourceId: number }) => {
 	}
 
 	return (
-		<div className="form-outline">
-			<h3 className="centered">Add a quotation</h3>
+		<div className="form-outline" style={{ position: 'relative' }}>
 			<form onSubmit={handleSubmit(onSubmit)}>
+				<h3 className="centered">Add a quotation</h3>
+				<button type="submit" className="submit">
+					Submit
+				</button>
 				<div className="flex">
 					<input
 						type="number"
@@ -58,9 +61,6 @@ export const QuotationForm = ({ sourceId }: { sourceId: number }) => {
 					{...register('content', { required: true })}
 					placeholder="Content"
 				/>
-				<button type="submit" className="submit">
-					Submit
-				</button>
 			</form>
 		</div>
 	)
