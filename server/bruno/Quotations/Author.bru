@@ -1,0 +1,21 @@
+meta {
+  name: Author
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{apiURL}}/authors
+  body: json
+  auth: none
+}
+
+headers {
+  X-API-KEY: {{X-API-KEY}}
+}
+
+body:json {
+  {
+      "name": "John Doe"
+  }
+}

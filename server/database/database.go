@@ -18,7 +18,7 @@ func SetupDB() {
 	}
 
 	// Migrate the schema
-	err = db.AutoMigrate(&model.Source{}, &model.Quotation{})
+	err = db.AutoMigrate(&model.Author{}, &model.Source{}, &model.Quotation{})
 	if err != nil {
 		log.Printf("Error migrating models: %v", err)
 	}

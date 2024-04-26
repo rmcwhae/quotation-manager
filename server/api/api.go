@@ -8,15 +8,11 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/russellmcwhae/quotation-manager/database"
 	"github.com/russellmcwhae/quotation-manager/model"
-	"gorm.io/gorm"
 )
 
 func FetchSources(c *gin.Context) {
 	var sources []model.Source
-	err := database.DB.Model(&model.Source{}).Order("updated_at desc").Preload("Quotations", func(db *gorm.DB) *gorm.DB {
-		db = db.Order("start_page asc").Order("created_at desc")
-		return db
-	}).Find(&sources).Error
+	err := database.DB.Model(&model.Source{}).Order("updated_at desc").Find(&sources).Error
 	if err != nil {
 		log.Print(err)
 	}
@@ -53,24 +49,77 @@ func EditSource(c *gin.Context) {
 	c.JSON(200, source)
 }
 
+func DeleteSource(c *gin.Context) {
+	var source model.Source
+	if err := database.DB.First(&source, c.Param("id")).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	database.DB.Delete(&source)
+
+	c.JSON(200, source)
+}
+
+func FetchAuthors(c *gin.Context) {
+	var authors []model.Author
+	err := database.DB.Model(&model.Author{}).Preload("Sources").Find(&authors).Error
+	if err != nil {
+		log.Print(err)
+	}
+
+	c.JSON(200, authors)
+}
+
+func CreateAuthor(c *gin.Context) {
+	var author model.Author
+	if err := c.ShouldBindJSON(&author); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	database.DB.Create(&author)
+
+	c.JSON(200, author)
+}
+
+func EditAuthor(c *gin.Context) {
+	var author model.Author
+	if err := database.DB.First(&author, c.Param("id")).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	if err := c.ShouldBindJSON(&author); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	database.DB.Save(&author)
+
+	c.JSON(200, author)
+}
+
+func DeleteAuthor(c *gin.Context) {
+	var author model.Author
+	if err := database.DB.First(&author, c.Param("id")).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	database.DB.Delete(&author)
+
+	c.JSON(200, author)
+}
+
 func FetchQuotations(c *gin.Context) {
-	var quotations []model.QuotationWithSource
-	err := database.DB.Model(&model.Quotation{}).Preload("Source").Find(&quotations).Error
+	var quotations []model.Quotation
+	err := database.DB.Model(&model.Quotation{}).Find(&quotations).Error
 	if err != nil {
 		log.Print(err)
 	}
 
 	c.JSON(200, quotations)
-}
-
-func FetchRandomQuotation(c *gin.Context) {
-	var quotation model.QuotationWithSource
-	err := database.DB.Model(&model.Quotation{}).Preload("Source").Order("RANDOM()").First(&quotation).Error
-	if err != nil {
-		log.Print(err)
-	}
-
-	c.JSON(200, quotation)
 }
 
 func CreateQuotation(c *gin.Context) {
@@ -96,6 +145,18 @@ func EditQuotation(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
+
+	c.JSON(200, quotation)
+}
+
+func DeleteQuotation(c *gin.Context) {
+	var quotation model.Quotation
+	if err := database.DB.First(&quotation, c.Param("id")).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	database.DB.Delete(&quotation)
 
 	c.JSON(200, quotation)
 }

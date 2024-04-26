@@ -19,13 +19,18 @@ func main() {
 
 	r := setupGin()
 
+	r.GET("/authors", api.FetchAuthors)
+	r.POST("/authors", middleware.AuthorizeAPIKey(), api.CreateAuthor)
+	r.PUT("/authors/:id", middleware.AuthorizeAPIKey(), api.EditAuthor)
+	r.DELETE("/authors/:id", middleware.AuthorizeAPIKey(), api.DeleteAuthor)
 	r.GET("/sources", api.FetchSources)
-	r.GET("/quotations", api.FetchQuotations)
-	r.GET("/quotations/random", api.FetchRandomQuotation)
 	r.POST("/sources", middleware.AuthorizeAPIKey(), api.CreateSource)
 	r.PUT("/sources/:id", middleware.AuthorizeAPIKey(), api.EditSource)
+	r.GET("/quotations", api.FetchQuotations)
+	r.DELETE("/sources/:id", middleware.AuthorizeAPIKey(), api.DeleteSource)
 	r.POST("/quotations", middleware.AuthorizeAPIKey(), api.CreateQuotation)
 	r.PUT("/quotations/:id", middleware.AuthorizeAPIKey(), api.EditQuotation)
+	r.DELETE("/quotations/:id", middleware.AuthorizeAPIKey(), api.DeleteQuotation)
 
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }

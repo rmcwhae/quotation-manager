@@ -13,12 +13,18 @@ type GormModel struct {
 	DeletedAt gorm.DeletedAt `gorm:"index" json:"-"`
 }
 
+type Author struct {
+	GormModel
+	Name    string   `json:"name"`
+	Sources []Source `gorm:"foreignKey:AuthorID" json:"sources"`
+}
+
 type Source struct {
 	GormModel
 	Title      string      `json:"title"`
-	Author     string      `json:"author"`
+	AuthorID   uint        `json:"author_id"`
 	Url        *string     `json:"url"`
-	Quotations []Quotation `gorm:"foreignKey:SourceID" json:"quotations"`
+	Quotations []Quotation `gorm:"foreignKey:SourceID" json:",omitempty"`
 }
 
 type Quotation struct {
@@ -27,9 +33,4 @@ type Quotation struct {
 	Content   string `json:"content"`
 	StartPage *uint  `json:"start_page"`
 	EndPage   *uint  `json:"end_page"`
-}
-
-type QuotationWithSource struct {
-	Quotation
-	Source Source `json:"source"`
 }
