@@ -6,6 +6,7 @@
 	--text-color: rgba(255, 255, 255, 0.87);
 	--grey-50: rgba(128, 128, 128, 0.5);
 	--radius: 6px;
+	--padding: 0.4em 0.8em;
 
 	color-scheme: light dark;
 	color: var(--text-color);
@@ -23,7 +24,7 @@ a {
 }
 
 body {
-	margin: 1em auto 0;
+	margin: 1em auto;
 	padding: 0 1em;
 	max-width: 40em;
 }
@@ -35,14 +36,6 @@ p {
 
 h2 {
 	margin-top: 2em;
-}
-
-.flex-border {
-	display: flex;
-	gap: 1em;
-	border: 1px solid var(--grey-50);
-	border-radius: var(--radius);
-	padding: 1em;
 }
 
 button {
@@ -61,7 +54,21 @@ button:focus-visible {
 input {
 	border-radius: var(--radius);
 	border: 1px solid var(--grey-50);
-	padding: 0.4em 0.8em;
+	padding: var(--padding);
+}
+
+.flex-between {
+	width: 100%;
+	display: flex;
+	gap: 1em;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.collapse {
+	border: 1px solid var(--grey-50);
+	border-radius: var(--radius);
+	padding: var(--padding);
 }
 
 @media (prefers-color-scheme: light) {

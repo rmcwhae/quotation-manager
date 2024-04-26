@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { postAuthor } from '../../services/Authors'
+import { Collapsible } from '../Collapsible'
 
 export const AddAuthorForm = () => {
 	const [name, setName] = useState('')
@@ -13,14 +14,16 @@ export const AddAuthorForm = () => {
 	}
 
 	return (
-		<form onSubmit={handleSubmit} className="flex-border">
-			<input
-				type="text"
-				value={name}
-				placeholder="Name"
-				onChange={e => setName(e.target.value)}
-			/>
-			<button type="submit">Add Author</button>
-		</form>
+		<Collapsible title="Add Author">
+			<form onSubmit={handleSubmit} className="flex-between">
+				<input
+					type="text"
+					value={name}
+					placeholder="Name"
+					onChange={e => setName(e.target.value)}
+				/>
+				<button type="submit">Add</button>
+			</form>
+		</Collapsible>
 	)
 }
