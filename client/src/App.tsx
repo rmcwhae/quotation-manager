@@ -1,7 +1,11 @@
 import { AuthorListWithSources } from './components/AuthorListWithSources'
 
 function App() {
-	return <AuthorListWithSources />
+	return (
+		<main>
+			<AuthorListWithSources />
+		</main>
+	)
 }
 
 export default App

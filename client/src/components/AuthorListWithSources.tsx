@@ -1,6 +1,6 @@
 import { useAuthors } from '../hooks/use-authors-sources'
-import { Author, Source } from '../types/Types'
-import { QuotationList } from './QuotationList'
+import { Author } from '../types/Types'
+import { Source } from './Source'
 
 export const AuthorListWithSources = () => {
 	const { authors, isLoading } = useAuthors()
@@ -9,29 +9,12 @@ export const AuthorListWithSources = () => {
 		return <div>Loading...</div>
 	}
 
-	return (
-		<div>
-			{authors.map((author: Author) => (
-				<div key={author.id}>
-					<h2>{author.name}</h2>
-					{author.sources.map((source: Source) => (
-						<div key={source.id}>
-							<h3>
-								{source.url ? (
-									<a href={source.url} target="_blank">
-										{source.title}
-									</a>
-								) : (
-									<>{source.title}</>
-								)}
-								{source.publication_year &&
-									' (' + source.publication_year + ')'}
-							</h3>
-							<QuotationList sourceId={source.id} />
-						</div>
-					))}
-				</div>
+	return authors.map((author: Author) => (
+		<div key={author.id}>
+			<h2>{author.name}</h2>
+			{author.sources.map(source => (
+				<Source key={source.id} source={source} />
 			))}
 		</div>
-	)
+	))
 }
