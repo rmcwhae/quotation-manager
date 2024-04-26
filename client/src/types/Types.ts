@@ -1,19 +1,20 @@
 export type Author = {
-	ID: number
-	Name: string
-	Sources: Source[]
+	id: number
+	name: string
+	sources: Source[]
 }
 
 export type Source = {
-	ID: number
-	Title: string
-	AuthorID: number
-	Url: string
+	id: number
+	title: string
+	author_id: number
+	url: string
 }
 
 export type Quotation = {
-	ID: number
-	Excerpt: string
-	Page: number
-	SourceID: number
+	id: number
+	content: string
+	start_page: number
+	end_page: number
+	source_id: number
 }
