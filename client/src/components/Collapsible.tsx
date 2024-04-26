@@ -1,5 +1,7 @@
 import { ReactNode, useState } from 'react'
 
+import clsx from 'clsx'
+
 export const Collapsible = ({
 	title,
 	children,
@@ -12,13 +14,14 @@ export const Collapsible = ({
 	return (
 		<>
 			<div className="collapse">
-				<div className="flex-between">
+				<div
+					className={clsx('flex-between', 'cursor-pointer', 'mb-1')}
+					onClick={() => setIsOpen(!isOpen)}
+				>
 					<div>{title}</div>
-					<button onClick={() => setIsOpen(!isOpen)}>
-						{isOpen ? '-' : '+'}
-					</button>
+					<div>{isOpen ? '-' : '+'}</div>
 				</div>
-				{isOpen && children}
+				{isOpen && <div className="mt-05">{children}</div>}
 			</div>
 		</>
 	)

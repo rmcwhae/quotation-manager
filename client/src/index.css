@@ -78,6 +78,14 @@ input {
 	padding: var(--padding);
 }
 
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.mt-05 {
+	margin-top: 0.5em;
+}
+
 @media (prefers-color-scheme: light) {
 	:root {
 		--text-color: #213547;
