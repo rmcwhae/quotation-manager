@@ -1,7 +1,7 @@
-import { AuthorList } from './components/AuthorList'
+import { AuthorListWithSources } from './components/AuthorListWithSources'
 
 function App() {
-	return <AuthorList />
+	return <AuthorListWithSources />
 }
 
 export default App

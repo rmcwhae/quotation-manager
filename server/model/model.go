@@ -21,10 +21,11 @@ type Author struct {
 
 type Source struct {
 	GormModel
-	Title      string      `json:"title"`
-	AuthorID   uint        `json:"author_id"`
-	Url        *string     `json:"url"`
-	Quotations []Quotation `gorm:"foreignKey:SourceID" json:",omitempty"`
+	Title           string      `json:"title"`
+	AuthorID        uint        `json:"author_id"`
+	Url             *string     `json:"url"`
+	PublicationYear *uint       `json:"publication_year"`
+	Quotations      []Quotation `gorm:"foreignKey:SourceID" json:",omitempty"`
 }
 
 type Quotation struct {

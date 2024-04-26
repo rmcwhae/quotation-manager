@@ -2,7 +2,7 @@ import { useAuthors } from '../hooks/use-authors-sources'
 import { Author, Source } from '../types/Types'
 import { QuotationList } from './QuotationList'
 
-export const AuthorList = () => {
+export const AuthorListWithSources = () => {
 	const { authors, isLoading } = useAuthors()
 
 	if (isLoading) {
@@ -24,6 +24,8 @@ export const AuthorList = () => {
 								) : (
 									<>{source.title}</>
 								)}
+								{source.publication_year &&
+									' (' + source.publication_year + ')'}
 							</h3>
 							<QuotationList sourceId={source.id} />
 						</div>

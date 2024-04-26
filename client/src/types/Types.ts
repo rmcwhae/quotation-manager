@@ -9,6 +9,7 @@ export type Source = {
 	title: string
 	author_id: number
 	url: string
+	publication_year: number
 }
 
 export type Quotation = {
