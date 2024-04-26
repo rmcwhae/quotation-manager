@@ -10,9 +10,9 @@ export const postAuthor = async (author: Author) => {
 }
 
 export const updateAuthor = async (author: Author) => {
-	return await fetcher(`/authors/${author.ID}`, 'PUT', author)
+	return await fetcher(`/authors/${author.id}`, 'PUT', author)
 }
 
 export const deleteAuthor = async (author: Author) => {
-	return await fetcher(`/authors/${author.ID}`, 'DELETE')
+	return await fetcher(`/authors/${author.id}`, 'DELETE')
 }

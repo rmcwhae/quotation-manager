@@ -8,9 +8,9 @@ export const postSource = async (source: Source) => {
 }
 
 export const updateSource = async (source: Source) => {
-	return await fetcher(`/sources/${source.ID}`, 'PUT', source)
+	return await fetcher(`/sources/${source.id}`, 'PUT', source)
 }
 
 export const deleteSource = async (source: Source) => {
-	return await fetcher(`/sources/${source.ID}`, 'DELETE')
+	return await fetcher(`/sources/${source.id}`, 'DELETE')
 }
