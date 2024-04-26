@@ -114,7 +114,7 @@ func DeleteAuthor(c *gin.Context) {
 
 func FetchQuotationsBySource(c *gin.Context) {
 	var quotations []model.Quotation
-	err := database.DB.Model(&model.Quotation{}).Where("source_id = ?", c.Param("id")).Find(&quotations).Error
+	err := database.DB.Model(&model.Quotation{}).Where("source_id = ?", c.Param("id")).Order("start_page").Find(&quotations).Error
 	if err != nil {
 		log.Print(err)
 	}
