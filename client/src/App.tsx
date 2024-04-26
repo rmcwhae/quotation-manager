@@ -1,4 +1,3 @@
-import './App.css'
 import { AuthorList } from './components/AuthorList'
 
 function App() {

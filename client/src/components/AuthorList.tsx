@@ -2,22 +2,22 @@ import { useAuthors } from '../hooks/use-authors-sources'
 import { Author, Source } from '../types/Types'
 
 export const AuthorList = () => {
-	const { authors } = useAuthors()
-	console.log('authors', authors)
+	const { authors, isLoading } = useAuthors()
+
+	if (isLoading) {
+		return <div>Loading...</div>
+	}
 
 	return (
 		<div>
-			{authors &&
-				authors.map((author: Author) => (
-					<div key={author.id}>
-						<h2>{author.name}</h2>
-						<ul>
-							{author.sources.map((source: Source) => (
-								<li key={source.id}>{source.title}</li>
-							))}
-						</ul>
-					</div>
-				))}
+			{authors.map((author: Author) => (
+				<div key={author.id}>
+					<h2>{author.name}</h2>
+					{author.sources.map((source: Source) => (
+						<h3 key={source.id}>{source.title}</h3>
+					))}
+				</div>
+			))}
 		</div>
 	)
 }
