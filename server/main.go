@@ -26,7 +26,7 @@ func main() {
 	r.GET("/sources", api.FetchSources)
 	r.POST("/sources", middleware.AuthorizeAPIKey(), api.CreateSource)
 	r.PUT("/sources/:id", middleware.AuthorizeAPIKey(), api.EditSource)
-	r.GET("/quotations", api.FetchQuotations)
+	r.GET("/sources/:id/quotations", api.FetchQuotationsBySource)
 	r.DELETE("/sources/:id", middleware.AuthorizeAPIKey(), api.DeleteSource)
 	r.POST("/quotations", middleware.AuthorizeAPIKey(), api.CreateQuotation)
 	r.PUT("/quotations/:id", middleware.AuthorizeAPIKey(), api.EditQuotation)
