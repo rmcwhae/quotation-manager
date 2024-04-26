@@ -32,10 +32,17 @@ body {
 p {
 	border-left: 2px solid var(--grey-50);
 	padding-left: 1em;
+	margin-bottom: 1em;
+	margin-left: calc(-1em - 2px);
 }
 
 h2 {
 	margin-top: 2em;
+	margin-bottom: 0.5em;
+}
+
+h3 {
+	margin-bottom: 0.5em;
 }
 
 button {
