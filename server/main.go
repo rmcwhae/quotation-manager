@@ -23,7 +23,7 @@ func main() {
 	r.POST("/authors", middleware.AuthorizeAPIKey(), api.CreateAuthor)
 	r.PUT("/authors/:id", middleware.AuthorizeAPIKey(), api.EditAuthor)
 	r.DELETE("/authors/:id", middleware.AuthorizeAPIKey(), api.DeleteAuthor)
-	r.GET("/sources", api.FetchSources)
+	// r.GET("/sources", api.FetchSources)
 	r.POST("/sources", middleware.AuthorizeAPIKey(), api.CreateSource)
 	r.PUT("/sources/:id", middleware.AuthorizeAPIKey(), api.EditSource)
 	r.GET("/sources/:id/quotations", api.FetchQuotationsBySource)
