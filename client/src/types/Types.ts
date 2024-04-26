@@ -14,7 +14,7 @@ export type Source = {
 export type Quotation = {
 	id: number
 	content: string
-	start_page: number
-	end_page: number
+	start_page?: number
+	end_page?: number
 	source_id: number
 }
