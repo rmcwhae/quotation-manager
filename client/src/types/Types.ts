@@ -1,7 +1,7 @@
 export type Author = {
-	id: number
+	id?: number
 	name: string
-	sources: Source[]
+	sources?: Source[]
 }
 
 export type Source = {

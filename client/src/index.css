@@ -4,6 +4,8 @@
 	font-weight: 400;
 
 	--text-color: rgba(255, 255, 255, 0.87);
+	--grey-50: rgba(128, 128, 128, 0.5);
+	--radius: 6px;
 
 	color-scheme: light dark;
 	color: var(--text-color);
@@ -21,13 +23,13 @@ a {
 }
 
 body {
-	margin: 0 auto;
+	margin: 1em auto 0;
 	padding: 0 1em;
 	max-width: 40em;
 }
 
 p {
-	border-left: 2px solid rgba(128, 128, 128, 0.5);
+	border-left: 2px solid var(--grey-50);
 	padding-left: 1em;
 }
 
@@ -35,32 +37,37 @@ h2 {
 	margin-top: 2em;
 }
 
-/* button {
-	border-radius: 8px;
+.flex-border {
+	display: flex;
+	gap: 1em;
+	border: 1px solid var(--grey-50);
+	border-radius: var(--radius);
+	padding: 1em;
+}
+
+button {
+	border-radius: var(--radius);
 	border: 1px solid transparent;
-	padding: 0.6em 1.2em;
-	font-size: 1em;
-	font-weight: 500;
-	font-family: inherit;
-	background-color: #1a1a1a;
+	padding: 0.4em 0.8em;
+	font-size: 0.85em;
+	font-weight: 700;
 	cursor: pointer;
 	transition: border-color 0.25s;
-}
-button:hover {
-	border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
 	outline: 4px auto -webkit-focus-ring-color;
-} */
+}
+input {
+	border-radius: var(--radius);
+	border: 1px solid var(--grey-50);
+	padding: 0.4em 0.8em;
+}
 
 @media (prefers-color-scheme: light) {
 	:root {
 		--text-color: #213547;
 		color: var(--text-color);
 		background-color: #ffffff;
-	}
-	button {
-		background-color: #f9f9f9;
 	}
 }
