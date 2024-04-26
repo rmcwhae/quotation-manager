@@ -12,7 +12,7 @@ export const AuthorListWithSources = () => {
 	return authors.map((author: Author) => (
 		<div key={author.id}>
 			<h2>{author.name}</h2>
-			{author.sources.map(source => (
+			{author.sources?.map(source => (
 				<Source key={source.id} source={source} />
 			))}
 		</div>
